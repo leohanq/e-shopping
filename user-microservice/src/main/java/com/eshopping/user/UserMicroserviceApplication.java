@@ -1,4 +1,4 @@
-package com.eshopping.usermicroservice;
+package com.eshopping.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

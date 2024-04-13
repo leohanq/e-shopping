@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  user:
+    image: user:latest
+    container_name: user
+    ports:
+      - "8082:8082"
+    expose:
+      - "8082"
+
