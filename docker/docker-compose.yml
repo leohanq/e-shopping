@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  eshopping-front:
+    image: eshopping-front:latest
+    container_name: eshopping-front
+    ports:
+      - "4200:4200"
+    expose:
+      - "4200"
+
