@@ -2,7 +2,6 @@ package com.eshopping.user.controller.service;
 
 
 import com.eshopping.user.model.entity.Customer;
-import com.eshopping.user.model.entity.User;
 import com.eshopping.user.model.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
