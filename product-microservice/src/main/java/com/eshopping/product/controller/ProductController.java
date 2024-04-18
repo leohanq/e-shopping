@@ -22,8 +22,6 @@ public class ProductController {
     @CrossOrigin("http://localhost:4200")
     public List<Product> getProducts() {
         return productService.allProduct();
-        //User user = productService.getUserById(1);
-        //System.out.println(user);
     }
 
     @GetMapping("/product/{id}")
