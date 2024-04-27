@@ -8,6 +8,7 @@ import { ProductService } from './services/product.service';
 
 import { Routes, RouterModule} from '@angular/router';
 import { ProductCategoryMenuComponent } from './components/product-category-menu/product-category-menu.component';
+import { CartStatusComponent } from './components/cart-status/cart-status.component';
 
 const routes: Routes = [
   {path: 'category/:id', component: ProductListComponent},
@@ -21,7 +22,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     ProductListComponent,
-    ProductCategoryMenuComponent
+    ProductCategoryMenuComponent,
+    CartStatusComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
