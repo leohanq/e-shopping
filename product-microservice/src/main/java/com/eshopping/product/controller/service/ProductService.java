@@ -1,13 +1,12 @@
 package com.eshopping.product.controller.service;
 
 
-import com.eshopping.product.feignclients.UserFeignClient;
-import com.eshopping.product.model.dto.User;
 import com.eshopping.product.model.entity.Product;
+import com.eshopping.product.model.entity.ProductCategory;
+import com.eshopping.product.model.repository.ProductCategoryRepository;
 import com.eshopping.product.model.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,13 +19,14 @@ public class ProductService {
     private ProductRepository productRepository;
 
     @Autowired
-    private WebClient webClient;
-
-    @Autowired
-    private UserFeignClient userFeignClient;
+    private ProductCategoryRepository productCategoryRepository;
 
     public List<Product> allProduct() {
         return productRepository.findAll();
+    }
+
+    public List<Product> searchCategoryById(Long id){
+        return productRepository.findByCategoryId(id);
     }
 
     public Optional<Product> getProduct(Integer id) {
@@ -38,10 +38,7 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public User getUserById(Integer userId) {
-        return userFeignClient.getUser(userId);
-      //  Mono<User> userMono = webClient.get().uri("/users/%s".formatted(userId))
-        //        .retrieve().bodyToMono(User.class);
-        //return userMono.block();
+    public List<ProductCategory> allProductCategories() {
+        return productCategoryRepository.findAll();
     }
 }

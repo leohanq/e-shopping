@@ -2,16 +2,15 @@ package com.eshopping.user.controller;
 
 import com.eshopping.user.controller.service.CustomerService;
 import com.eshopping.user.model.entity.Customer;
+import jakarta.ws.rs.QueryParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 
 @RestController
+@RequestMapping("")
 public class CustomerController {
 
     @Autowired
@@ -25,7 +24,11 @@ public class CustomerController {
     @GetMapping("/users/{id}")
     public Customer getCustomer(@PathVariable(name = "id") Long id) {
         return customerService.getCustomer(id).orElseThrow();
+    }
 
+    @GetMapping("/users/findCustomerByNameAndEmail")
+    public Customer getCustomer(@QueryParam("firstName") String firstName, @QueryParam("email") String email) {
+        return customerService.getCustomerByEmail(firstName, email);
     }
 
     @GetMapping("/users/delete/{id}")
@@ -33,7 +36,7 @@ public class CustomerController {
         customerService.deleteCustomer(customer);
     }
     @PostMapping("/users/save")
-    public void saveUser(Customer customer) {
-        customerService.saveCustomer(customer);
+    public Customer saveUser(@RequestBody Customer customer) {
+        return customerService.saveCustomer(customer);
     }
 }
