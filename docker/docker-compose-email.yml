@@ -1,0 +1,10 @@
+version: "3.2"
+
+services:
+  consumer:
+    build: receiveandemail
+    container_name: notification
+    environment:
+        AMQP_URL: 'amqp://rabbitmq?connection_attempts=10&retry_delay=10'
+    volumes:
+      - ./receiveandemail:/usr/src/app/receiveandemail
